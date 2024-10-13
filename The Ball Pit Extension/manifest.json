@@ -1,0 +1,34 @@
+{
+  "name": "Ball Pit",
+  "version": "0.1",
+  "manifest_version": 3, 
+  "description": "This browser extension prompts the user into clicking on one of the bouncing circles on the screen when they land on the page of a big tech company that is known to have committed human rights violations",
+  "icons": {
+    "48": "icons/icons48.png",
+    "128": "icons/icons128.png"
+  },
+  "service_worker": "background.js",
+
+  "background": {
+    "scripts": [
+      "background.js",  "p5.js", "p5.sound.min.js", "sketch.js"
+    ],
+    "persistent": true
+  },
+  "permissions": ["activeTab", "scripting"],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.co.uk/*",
+        "https://www.apple.com/uk/*"
+      ],
+      "js": ["content.js", "p5.js", "p5.sound.min.js", "sketch.js"]  
+    }
+    ],
+   
+   "action": {
+    "default_icon" : "icons/icons128.png",
+    "default_popup" : "index.html"
+   }
+  }
